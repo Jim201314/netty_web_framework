@@ -11,8 +11,7 @@
 	</appender>
 
 	<appender name="dailyAppender" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="logs/interface-netty-service.log" />
-		<param name="Target" value="System.out" />
+		<param name="File" value="logs/netty_web.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p]  (%c:%L) - %m%n" />
@@ -71,7 +70,7 @@
 	<!-- Root Logger -->
 	<root>
 		<priority value="DEBUG" />
-		<appender-ref ref="console" />
+		<appender-ref ref="dailyAppender" />
 	</root>
 
 </log4j:configuration>

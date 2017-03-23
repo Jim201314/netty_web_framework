@@ -1,8 +1,6 @@
 package com.wan51.netty.util;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.sun.org.apache.regexp.internal.RE;
 import com.wan51.netty.RequestParam;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -15,7 +13,6 @@ import io.netty.util.CharsetUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 
@@ -26,9 +23,9 @@ import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 /**
  * Created by gm665 on 2017/3/22.
  */
-public class NettyUtil {
+public class NettyUtilTool {
 
-    private static final Logger logger = Logger.getLogger(NettyUtil.class);
+    private static final Logger logger = Logger.getLogger(NettyUtilTool.class);
 
     private static final AsciiString CONNECTION = new AsciiString("Connection");
     private static final AsciiString KEEP_ALIVE = new AsciiString("keep-alive");

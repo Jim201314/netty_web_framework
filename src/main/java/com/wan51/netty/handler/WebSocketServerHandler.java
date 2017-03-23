@@ -17,7 +17,7 @@ package com.wan51.netty.handler;
 
 import com.google.common.base.Strings;
 import com.wan51.netty.RequestParam;
-import com.wan51.netty.util.NettyUtil;
+import com.wan51.netty.util.NettyUtilTool;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
@@ -79,7 +79,7 @@ public class WebSocketServerHandler extends ChannelInboundHandlerAdapter {
         }
         //// TODO: 2017/3/23 在这里可以写更多的拦截方法 
         RequestParam requestParam = new RequestParam();
-        NettyUtil.getParamFromUri(requestParam, req);
+        NettyUtilTool.getParamFromUri(requestParam, req);
         String service = requestParam.getService();
         String action = requestParam.getAction();
         if(Strings.isNullOrEmpty(service) || Strings.isNullOrEmpty(action))
@@ -89,7 +89,7 @@ public class WebSocketServerHandler extends ChannelInboundHandlerAdapter {
             try {
                 Method method = object.getClass().getMethod(action, requestParam.getClass());
                 Object result = method.invoke(object, requestParam);
-                NettyUtil.writeToClient(ctx, req, result);
+                NettyUtilTool.writeToClient(ctx, req, result);
                 return;
             } catch (NoSuchMethodException e) {
                 logger.error("没有这个方法{}",e);
