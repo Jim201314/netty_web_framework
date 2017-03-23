@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" >
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender" >
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="dailyAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/interface-netty-service.log" />
+		<param name="Target" value="System.out" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p]  (%c:%L) - %m%n" />
+		</layout>
+	</appender>
+	<!-- ibatis -->
+	<logger name="com.ibatis" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.Connection" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.Statement" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.PreparedStatement" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="java.sql.ResultSet" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="console" />
+	</logger>
+
+	<logger name="container">
+		<level value="DEBUG" />
+		<appender-ref ref="dailyAppender" />
+	</logger>
+
+	<logger name="mainHandler">
+		<level value="DEBUG" />
+		<appender-ref ref="dailyAppender" />
+	</logger>
+
+	<logger name="handler">
+		<level value="DEBUG" />
+		<appender-ref ref="dailyAppender" />
+	</logger>
+	<logger name="dao">
+		<level value="DEBUG" />
+		<appender-ref ref="dailyAppender" />
+	</logger>
+	<logger name="service">
+		<level value="DEBUG" />
+		<appender-ref ref="dailyAppender" />
+	</logger>
+	<logger name="common">
+		<level value="DEBUG" />
+		<appender-ref ref="dailyAppender" />
+	</logger>
+	<!-- quartz -->
+	<logger name="quartz">
+		<level value="ERROR" />
+		<appender-ref ref="console" />
+	</logger>
+	<!-- Root Logger -->
+	<root>
+		<priority value="DEBUG" />
+		<appender-ref ref="console" />
+	</root>
+
+</log4j:configuration>
