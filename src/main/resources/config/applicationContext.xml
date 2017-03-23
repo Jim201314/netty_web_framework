@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd  
+           http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.1.xsd  
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+           http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-autowire="byName">
+	<!--
+	<context:property-placeholder location="file:/usr/doright/interface/interface-netty-service-config.properties"/>
+	-->
+
+    <context:property-placeholder location="classpath:config/interface-netty-service-config.properties"/> 
+
+
+	<!-- spring component service scan -->
+	<context:component-scan base-package="com.wan51" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}">
+		</property>
+		<property name="url" value="${jdbc.url}">
+		</property>
+		<property name="username" value="${jdbc.username}">
+		</property>
+		<property name="password" value="${jdbc.password}">
+		</property>
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 名字不能为sqlSessionFactory  否则会导致读取不了properties属性 -->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!--<property name="configLocation" value="classpath:mapper/*.xml"></property>-->
+		<property name="configLocation" value="" />
+		<!-- 实体类映射文件路径,这里只有一个就写死了，多个可以使用mybatis/*.xml来替代 -->
+		<property name="mapperLocations" value="classpath:mapper/*.xml" />
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sessionFactory"></property>
+		<property name="basePackage" value="com.wan51.mapper" />
+	</bean>
+
+	<!-- spring cache -->
+	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+		<property name="caches">
+			<set>
+				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"   p:name="default" />
+				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"   p:name="andCache" />
+			</set>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+</beans>
+
