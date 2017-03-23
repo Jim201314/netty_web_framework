@@ -14,15 +14,15 @@
 	default-autowire="byName">
 	
 	
-	<!--<bean id="log4jInitialization"  class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">  -->
-       <!--<property name="targetClass"  value="org.springframework.util.Log4jConfigurer" />  -->
-       <!--<property name="targetMethod" value="initLogging" />-->
-       <!--<property name="arguments">-->
-          <!--<list>-->
-             <!--<value>${log4jPath}</value>-->
-          <!--</list>  -->
-       <!--</property>  -->
-    <!--</bean>-->
+	<bean id="log4jInitialization"  class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+       <property name="targetClass"  value="org.springframework.util.Log4jConfigurer" />
+       <property name="targetMethod" value="initLogging" />
+       <property name="arguments">
+          <list>
+             <value>classpath:config/log4j.xml</value>
+          </list>
+       </property>
+    </bean>
 
 	<bean id="webSocketServerInitializer" class="com.wan51.netty.handler.WebSocketServerInitializer">
 		<property name="urlHandlerMap" ref="urlHandlerMap" />
