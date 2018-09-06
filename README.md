@@ -14,11 +14,11 @@
        同样的功能用springboot和netty相比，QPS大概是前者3.5倍左右。
 
 Springboot压测结果截图（QPS平均在1万左右）：
- ![springboot性能压测报告](https://github.com/Jim201314/netty_web_framework/master/readme/spring.png)
+ ![springboot性能压测报告](https://github.com/Jim201314/netty_web_framework/tree/master/readme/spring.png)
  
 
 本框架压测结果截图：（QPS平均在3.8万）
- ![本框架性能压测报告](https://github.com/Jim201314/netty_web_framework/master/readme/netty.png)
+ ![本框架性能压测报告](https://github.com/Jim201314/netty_web_framework/tree/master/readme/netty.png)
 
 主要技术：
  
@@ -30,7 +30,7 @@ Mysql
  
 
 项目结构：
- ![本框架性项目结构](https://github.com/Jim201314/netty_web_framework/master/readme/idea.png)
+ ![本框架性项目结构](https://github.com/Jim201314/netty_web_framework/tree/master/readme/idea.png)
 
 入口函数：
 
@@ -96,7 +96,7 @@ public class NettyApplicationEntrance {
 
 访问URL:
 
-localhost:8080/api?service=city&action=list
+http://localhost:8080/api?service=city&action=list
 
  SQL如下：
 
