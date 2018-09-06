@@ -18,7 +18,7 @@ Springboot压测结果截图（QPS平均在1万左右）：
  
 
 本框架压测结果截图：（QPS平均在3.8万）
- ![本框架性能压测报告](https://github.com/Jim201314/netty_web_framework/tree/master/readme/netty.png)
+ ![image](https://github.com/Jim201314/netty_web_framework/tree/master/readme/netty.png)
 
 主要技术：
  
@@ -30,7 +30,7 @@ Mysql
  
 
 项目结构：
- ![本框架性项目结构](https://github.com/Jim201314/netty_web_framework/tree/master/readme/idea.png)
+ ![image](https://github.com/Jim201314/netty_web_framework/master/readme/idea.png)
 
 入口函数：
 
