@@ -80,6 +80,7 @@ public class NettyApplicationEntrance {
     }
 ```    
 
+
 访问截图(这是一个静态方法)：
 
 ![本框架访问显示截图](https://github.com/Jim201314/netty_web_framework/raw/master/readme/url.png)
