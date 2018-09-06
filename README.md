@@ -14,7 +14,7 @@
        同样的功能用springboot和netty相比，QPS大概是前者3.5倍左右。
 
 Springboot压测结果截图（QPS平均在1万左右）：
- ![springboot性能压测报告](https://github.com/Jim201314/netty_web_framework/tree/master/readme/spring.png)
+ ![springboot性能压测报告](https://github.com/Jim201314/netty_web_framework/raw/master/readme/spring.png)
  
 
 本框架压测结果截图：（QPS平均在3.8万）
