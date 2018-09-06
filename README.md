@@ -18,7 +18,7 @@ Springboot压测结果截图（QPS平均在1万左右）：
  
 
 本框架压测结果截图：（QPS平均在3.8万）
- ![image](https://github.com/Jim201314/netty_web_framework/tree/master/readme/netty.png)
+ ![本框架性能压测报告](https://github.com/Jim201314/netty_web_framework/raw/master/readme/netty.png)
 
 主要技术：
  
@@ -27,14 +27,11 @@ Spring 4.3.2.RELEASE
 mybatis
 Mysql
 
- 
-
 项目结构：
- ![image](https://github.com/Jim201314/netty_web_framework/master/readme/idea.png)
+ ![本框架项目结构图](https://github.com/Jim201314/netty_web_framework/master/readme/idea.png)
 
 入口函数：
-
-复制代码
+```java
 /**
  * Created by 老包子 on 2017/3/22.
  * netty web 项目启动入口
@@ -81,15 +78,11 @@ public class NettyApplicationEntrance {
         logger.info("start nettyContainer....");
         logger.info("--------------------------------------------");
     }
-复制代码
- 
-
- 
+```    
 
 访问截图(这是一个静态方法)：
 
- 
-
+![本框架访问显示截图](https://github.com/Jim201314/netty_web_framework/raw/master/readme/url.png)
  
 
 另外还有一个关于数据库的访问demo, 需要配置好数据库，并导入表结构和数据.
@@ -99,32 +92,16 @@ public class NettyApplicationEntrance {
 http://localhost:8080/api?service=city&action=list
 
  SQL如下：
-
-复制代码
+```SQL
 DROP TABLE IF EXISTS `city`;
-
 CREATE TABLE `city` (
-
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-
   `cityname` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
-
   `pinying` varchar(20) DEFAULT NULL,
-
   `status` tinyint(1) DEFAULT NULL,
-
   PRIMARY KEY (`id`)
-
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
 INSERT INTO `city` VALUES ('1', '杭州', 'hangzhou', '1');
-
 INSERT INTO `city` VALUES ('2', '上海', 'shanghai', '1');
-
 INSERT INTO `city` VALUES ('3', '北京', 'beijing', '1');
-复制代码
- 
-
-源码已上传到githup, 有兴趣的同学可以弄下来看看，但不保证在生产环境运行稳定。
-
-https://github.com/Jim201314/netty_web_framework
+```
